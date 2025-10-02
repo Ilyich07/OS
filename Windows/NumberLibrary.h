@@ -25,10 +25,9 @@ public:
     static Number sqrt(const Number& num);
     static Number arctg(const Number& x, const Number& y);
 
-    // Ввод/вывод
     friend std::ostream& operator<<(std::ostream& os, const Number& num);
 
-    // Константы
     static const Number ZERO;
     static const Number ONE;
 };
+
