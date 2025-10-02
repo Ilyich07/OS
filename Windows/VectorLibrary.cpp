@@ -2,12 +2,10 @@
 #include "VectorLibrary.h"
 #include <cmath>
 
-// Вспомогательная функция
 Number create_number(double value) {
     return Number(value);
 }
 
-// Конструкторы и методы класса (остаются без изменений)
 Vector::Vector(const Number& x_val, const Number& y_val) : x(x_val), y(y_val) {}
 Vector::Vector(const Vector& other) : x(other.x), y(other.y) {}
 
@@ -37,7 +35,6 @@ Vector Vector::subtract(const Vector& other) const {
     return Vector(new_x, new_y);
 }
 
-// Глобальные векторы
 static Vector* zero_vector = nullptr;
 static Vector* one_one_vector = nullptr;
 
@@ -81,4 +78,5 @@ Vector* vector_subtract(Vector* vector1, Vector* vector2) {
     Vector result = vector1->subtract(*vector2);
     return new Vector(result.getX(), result.getY());
 }
+
 
