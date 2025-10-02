@@ -25,7 +25,6 @@ public:
     Vector subtract(const Vector& other) const;
 };
 
-// C-интерфейс использует Vector* вместо void*
 extern "C" {
     VECTORLIBRARY_API extern Vector* VECTOR_ZERO;
     VECTORLIBRARY_API extern Vector* VECTOR_ONE_ONE;
@@ -38,4 +37,5 @@ extern "C" {
     VECTORLIBRARY_API double vector_get_theta(Vector* vector);
     VECTORLIBRARY_API Vector* vector_add(Vector* vector1, Vector* vector2);
     VECTORLIBRARY_API Vector* vector_subtract(Vector* vector1, Vector* vector2);
+
 }
