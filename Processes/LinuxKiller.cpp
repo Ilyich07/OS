@@ -12,7 +12,6 @@
 
 std::vector<pid_t> getPidsByName(const std::string& processName) {
     std::vector<pid_t> pids;
-    // Use pgrep -f to match full command line (more reliable for GUI apps)
     std::string command = "pgrep -f \"" + processName + "\"";
     FILE* pipe = popen(command.c_str(), "r");
     if (!pipe) return pids;
@@ -56,7 +55,6 @@ void killProcessesFromEnvironment() {
     std::stringstream ss(env);
     std::string token;
     while (std::getline(ss, token, ',')) {
-        // trim
         size_t a = token.find_first_not_of(" \t");
         size_t b = token.find_last_not_of(" \t");
         if (a==std::string::npos || b==std::string::npos) continue;
@@ -71,10 +69,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // 1) always kill from PROC_TO_KILL first
     killProcessesFromEnvironment();
 
-    // 2) then apply the explicit argument
     if (strcmp(argv[1], "--id") == 0) {
         pid_t pid = static_cast<pid_t>(atoi(argv[2]));
         if (pid > 0) {
